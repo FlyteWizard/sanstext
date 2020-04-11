@@ -1,0 +1,140 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Saira&display=swap');
+
+/* Colours */
+:root {
+  --primary: #753AEC;
+  --primary-darken: #6D40D2;
+  --background: #E84F53;
+  --purple: #7D3CFF;
+  --yellow: #FDCC42;
+  --blue: #01D7F9;
+  --pink: #EC4F53;
+  --black: #040307;
+}
+
+/* Body */
+body {
+  font-family: 'Saira', sans-serif;
+}
+
+/* Navigation */
+.navbar {
+  border-bottom: 0.2rem solid var(--black);
+}
+
+/* Title */
+.twitch-chat-title {
+  padding: 2rem 0 1rem;
+}
+
+/* Main */
+main {
+  min-height: calc(100vh - 163px);
+  background-color: var(--background);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-radius: 1rem 0.5rem 2.5rem 0;
+}
+
+@media (max-width: 576px)  {
+  main {
+    min-height: calc(100vh - 217px);
+  }
+}
+
+@media (min-width: 768px) {
+  main {
+    padding-right: 2rem!important;
+    padding-left: 2rem!important;
+  }
+}
+
+/* Bootstrap Hack */
+.row {
+  margin-left: 0;
+}
+
+/* Card */
+.card {
+  margin: 1rem 0 0;
+  border-radius: 1rem;
+  border-color: var(--black);
+  border-width: 0.1rem;
+}
+
+.card:last-child {
+  margin-bottom: 1rem;
+}
+
+/* Chat */
+.chat {
+  padding-top: 0;
+  border: 0.2rem var(--black) solid;
+  border-radius: 1rem;
+  min-height: calc(100vh - 14rem);
+  max-height: calc(100vh - 14rem);
+  overflow-x: scroll;
+  background-color: white;
+}
+
+@media (max-width: 576px) {
+  .chat {
+    min-height: calc(100vh - 17.5rem);
+    max-height: calc(100vh - 17.5rem);
+  }
+}
+
+.chat h2 {
+  text-shadow: -1px 0 var(--black), 0 2px var(--black), 2px 0 var(--black), 0 -1px var(--black);
+}
+
+.chat p {
+  margin-bottom: 0;
+}
+
+/* Button */
+.btn {
+  border-color: var(--black);
+  border-width: 0.15rem;
+  border-radius: 1.2rem;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn:not(:disabled):not(.disabled).active,
+.btn:not(:disabled):not(.disabled):active,
+.show>.btn.dropdown-toggle {
+  border-color: var(--black);
+  border-width: 0.15rem;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus
+.btn-primary:active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle {
+  background-color: var(--primary-darken);
+}
+
+/* Form */
+.form-control {
+  border-radius: 0.5rem;
+  border-color: var(--black);
+}
+
+.form-inline {
+  justify-content: flex-end;
+}
+
+@media (max-width: 576px) {
+  .form-inline {
+    width: 100%;
+  }
+}

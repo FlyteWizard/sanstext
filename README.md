@@ -1,6 +1,6 @@
 # SansText
 
-A simple Twitch Chat App. Input the username of a streamer and chat will appear.
+A simple Twitch Chat App. Set your favourite Streamer and read a purely text based Twitch Chat.
 
 ## Tools
 

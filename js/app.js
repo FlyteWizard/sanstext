@@ -1,5 +1,5 @@
 // Global
-let userStreamer = "";
+let userStreamer = '';
 
 // Connect to Twitch Chat
 ComfyJS.onChat = (user, message, flags, self, extra) => {
@@ -15,6 +15,10 @@ ComfyJS.onChat = (user, message, flags, self, extra) => {
     // Remove the First Message
     chat.messages.splice(0, 1);
   }
+
+  // Scroll to Bottom
+  chatMessage = document.querySelector('#chat');
+  chatMessage.scrollTop = chatMessage.scrollHeight;
 }
 
 // Vue chat-message
@@ -24,7 +28,7 @@ Vue.component('chat-message', {
   ],
   data: function (props) {
     // isColourWhite
-    if (props.messages.usernameColor === "#FFFFFF") {
+    if (props.messages.usernameColor === '#FFFFFF') {
       return {
         isColourWhite: true
       }
@@ -56,8 +60,18 @@ let chat = new Vue({
     messages: [
       {
         username: 'FlyteWizard',
-        usernameColor: '#FF69B4',
+        usernameColor: '#7D3CFF',
         message: 'Welcome to SansText! A simple Twitch Chat App.'
+      },
+      {
+        username: 'Dominique',
+        usernameColor: '#01D7F9',
+        message: 'Set a Streamer to connect to Twitch Chat.'
+      },
+      {
+        username: 'Flyte',
+        usernameColor: '#FDCC42',
+        message: 'Explore the project on GitHub: https://github.com/FlyteWizard/sanstext'
       }
     ]
   }
@@ -75,6 +89,9 @@ let streamer = new Vue({
 let setStreamer = () => {
   // Disconnect from Streamers Chat
   if ( userStreamer ) {
+    // Remove UserStreamer
+    localStorage.removeItem(userStreamer);
+    // Disconnect from Twitch Chat
     ComfyJS.Disconnect();
   }
 
@@ -83,6 +100,24 @@ let setStreamer = () => {
 
   // Set Streamer
   userStreamer = streamer.streamer;
+  
+  // Set UserStreamer
+  localStorage.setItem('userStreamer', userStreamer);
+
+  // Connect to Streamers Chat
+  ComfyJS.Init(userStreamer);
+}
+
+// Refresh with Connected Streamer
+if (localStorage.getItem('userStreamer')) {
+  // Get Streamer
+  userStreamer = localStorage.getItem('userStreamer');
+
+  // Remove All Messages
+  chat.messages.splice(0);
+
+  // Set Streamer
+  streamer.streamer = userStreamer;
 
   // Connect to Streamers Chat
   ComfyJS.Init(userStreamer);
@@ -91,8 +126,8 @@ let setStreamer = () => {
 // Prevents Form Refresh On Submit
 // Keyboard Submit
 document.getElementById('streamer').addEventListener('keypress', function (event) {
-  if (event.keyCode == 13) {
+  if (event.key === 'Enter') {
     event.preventDefault();
-    document.getElementById("setStreamerFunction").click();
+    document.getElementById('setStreamerFunction').click();
   }
 });
